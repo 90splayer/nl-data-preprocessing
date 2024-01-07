@@ -222,13 +222,13 @@ def nearest_neighbor(v, candidates, k=1, cosine_similarity=cosine_similarity):
         similarity_l.append(cos_similarity)
 
     # sort the similarity list and get the indices of the sorted list    
-    sorted_ids = np.argsort(similarity_l)  
+    sorted_ids = np.argsort(similarity_l, axis=0)  
     
     # Reverse the order of the sorted_ids array
-    sorted_ids = np.sort(sorted_ids)
+    sorted_ids = sorted_ids[::-1]
     
     # get the indices of the k most similar candidate vectors
-    k_idx = sorted_ids[-k:]
+    k_idx = sorted_ids[:k]
     ### END CODE HERE ###
     return k_idx
 
